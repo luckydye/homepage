@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>luckydye</title>
+
+    <meta name="description" content="luckydye's projects" />
+
+    <script src="main.ts" type="module"></script>
+
+    <style>
+      :root {
+        font-family: sans-serif;
+
+        --accent-color: rgb(124, 192, 219);
+      }
+
+      body {
+        margin: 0;
+        color: rgb(24, 26, 27);
+        background: rgb(241, 241, 241);
+        overflow: overlay;
+      }
+
+      lucky-grid,
+      lucky-footer,
+      lucky-header {
+        max-width: 1500px;
+        margin: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+    </style>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <lucky-header></lucky-header>
+    <main>
+      <lucky-grid></lucky-grid>
+    </main>
+    <lucky-footer></lucky-footer>
+  </body>
+</html>

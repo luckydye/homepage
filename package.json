@@ -1,0 +1,16 @@
+{
+  "name": "project-grid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@atrium-ui/lazyimage": "^0.0.1",
+    "lit": "^2.2.8"
+  }
+}
