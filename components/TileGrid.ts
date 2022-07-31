@@ -1,8 +1,11 @@
 import { css, html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
 import projects from "../queries/Projects.gql?raw";
+import { Lightbox } from "./Lightbox";
 
 type Project = {
+  id: string;
   title: string;
   description: string;
   editorialDate: string;
@@ -36,6 +39,12 @@ export function fetchApi(graphQuery) {
     });
 }
 
+function showBigImage(e) {
+  e.preventDefault();
+  const show = new Lightbox(e.target);
+  document.body.append(show);
+}
+
 @customElement("lucky-grid")
 export class Grid extends LitElement {
   static get styles() {
@@ -44,6 +53,12 @@ export class Grid extends LitElement {
         display: block;
 
         --columnCount: 4;
+      }
+
+      aui-lazyimage {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
 
       .grid {
@@ -83,11 +98,11 @@ export class Grid extends LitElement {
       }
 
       lucky-tile:hover > link-button {
-        transform: translateY(-10px);
+        transform: translateY(-20px);
       }
 
       lucky-tile:hover > h3 {
-        transform: translateY(-60px);
+        transform: translateY(-70px);
       }
 
       h2 {
@@ -155,11 +170,12 @@ export class Grid extends LitElement {
 
     return html`
       <div class="grid">
-        ${this.projects
-          .sort((a, b) => {
+        ${repeat(
+          this.projects.sort((a, b) => {
             return new Date(b.editorialDate) - new Date(a.editorialDate);
-          })
-          .map((project: Project) => {
+          }),
+          (project) => project.id,
+          (project: Project) => {
             let sapcerCount = 0;
             if (lastDate) {
               const dateDiff = Math.abs(
@@ -208,7 +224,7 @@ export class Grid extends LitElement {
                 )}
               ${column > columnCount - 3
                 ? html`
-                    <a href="${project.url}" class="link">
+                    <a href="${project.url}" target="_blank" class="link">
                       <lucky-tile
                         column="${nextColumn()}"
                         style="align-items: flex-end; text-align: right;"
@@ -224,7 +240,7 @@ export class Grid extends LitElement {
                     </a>
                   `
                 : html`
-                    <a href="${project.url}" class="link">
+                    <a href="${project.url}" target="_blank" class="link">
                       <lucky-tile column="${nextColumn()}">
                         <aui-lazyimage src="${project.preview.url}" />
                       </lucky-tile>
@@ -245,7 +261,8 @@ export class Grid extends LitElement {
                 : html``}
             `;
             return template;
-          })}
+          }
+        )}
       </div>
     `;
   }

@@ -46,7 +46,7 @@ export class Tile extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    // this.style.setProperty("--rot", `${(Math.random() - 0.5) * 4}deg`);
+    this.style.setProperty("--rot", `${(Math.random() - 0.5) * 2}deg`);
 
     observer.observe(this);
   }

@@ -14,6 +14,7 @@ export class Footer extends LitElement {
         align-items: center;
         padding: 100px 0 60px 0;
         box-sizing: border-box;
+        opacity: 0.125;
       }
 
       a {
