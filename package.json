@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@atrium-ui/lazyimage": "^0.0.1",
-    "lit": "^2.2.8"
+    "lit": "^2.2.8",
+    "vite": "^3.0.4"
   }
 }
