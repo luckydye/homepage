@@ -39,12 +39,6 @@ export function fetchApi(graphQuery) {
     });
 }
 
-function showBigImage(e) {
-  e.preventDefault();
-  const show = new Lightbox(e.target);
-  document.body.append(show);
-}
-
 @customElement("lucky-grid")
 export class Grid extends LitElement {
   static get styles() {
@@ -76,6 +70,13 @@ export class Grid extends LitElement {
         flex-flow: column;
       }
 
+      @media screen and (max-width: 700px) {
+        lucky-tile {
+          height: auto;
+          min-height: 100px;
+        }
+      }
+
       link-button {
         position: absolute;
         transform: translateY(50px);
@@ -90,11 +91,11 @@ export class Grid extends LitElement {
       }
 
       h3 {
-        font-size: 32px;
+        font-size: 2rem;
         margin: 5px 15px;
         font-weight: normal;
         max-width: 75%;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease 0s;
       }
 
       lucky-tile:hover > link-button {
@@ -106,9 +107,9 @@ export class Grid extends LitElement {
       }
 
       h2 {
-        font-size: 56px;
+        font-size: 3.5rem;
         margin: 15px;
-        font-weight: normal;
+        font-weight: bold;
       }
 
       .spacer {
@@ -140,7 +141,7 @@ export class Grid extends LitElement {
 
     const updateSize = () => {
       if (window.innerWidth < 700) {
-        this.columnCount = 2;
+        this.columnCount = 1;
         this.style.setProperty("--columnCount", this.columnCount.toString());
         this.requestUpdate();
       } else if (window.innerWidth < 1200) {

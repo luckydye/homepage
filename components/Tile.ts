@@ -25,7 +25,8 @@ export class Tile extends LitElement {
         display: block;
         transform-origin: 50% 20px;
         opacity: 0;
-        overflow: hidden;
+        overflow: auto;
+        will-change: transform;
         border-radius: 6px;
         transition: opacity 0.5s ease 0s,
           box-shadow 0.5s cubic-bezier(0.26, 0.3, 0, 0.98) 0s,

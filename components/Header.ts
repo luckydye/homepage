@@ -16,6 +16,12 @@ export class Header extends LitElement {
         z-index: 100;
       }
 
+      @media screen and (max-width: 700px) {
+        :host {
+          padding: 50px 0 10px 0;
+        }
+      }
+
       a {
         color: currentColor;
       }
@@ -26,7 +32,6 @@ export class Header extends LitElement {
         text-transform: uppercase;
         font-weight: normal;
         font-size: 14px;
-        font-family: "Roboto Mono", monospace;
         justify-self: flex-start;
         grid-row: 2;
         grid-column: 1;
@@ -160,7 +165,11 @@ export class Header extends LitElement {
         <span>Projects</span>
       </div>
       <a href="/" title="go to home" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218.8 48.1">
+        <svg
+          height="50px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 218.8 48.1"
+        >
           <g>
             <path class="st0" d="M7.1,40.7h11.8v6.7H0V0.7h7.1V40.7z" />
             <path
