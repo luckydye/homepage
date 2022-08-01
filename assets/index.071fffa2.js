@@ -100,6 +100,12 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
         z-index: 100;
       }
 
+      @media screen and (max-width: 700px) {
+        :host {
+          padding: 50px 0 10px 0;
+        }
+      }
+
       a {
         color: currentColor;
       }
@@ -110,7 +116,6 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
         text-transform: uppercase;
         font-weight: normal;
         font-size: 14px;
-        font-family: "Roboto Mono", monospace;
         justify-self: flex-start;
         grid-row: 2;
         grid-column: 1;
@@ -240,7 +245,11 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
         <span>Projects</span>
       </div>
       <a href="/" title="go to home" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218.8 48.1">
+        <svg
+          height="50px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 218.8 48.1"
+        >
           <g>
             <path class="st0" d="M7.1,40.7h11.8v6.7H0V0.7h7.1V40.7z" />
             <path
@@ -503,7 +512,8 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
         display: block;
         transform-origin: 50% 20px;
         opacity: 0;
-        overflow: hidden;
+        overflow: auto;
+        will-change: transform;
         border-radius: 6px;
         transition: opacity 0.5s ease 0s,
           box-shadow 0.5s cubic-bezier(0.26, 0.3, 0, 0.98) 0s,
@@ -565,6 +575,13 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
         flex-flow: column;
       }
 
+      @media screen and (max-width: 700px) {
+        lucky-tile {
+          height: auto;
+          min-height: 100px;
+        }
+      }
+
       link-button {
         position: absolute;
         transform: translateY(50px);
@@ -579,11 +596,11 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
       }
 
       h3 {
-        font-size: 32px;
+        font-size: 2rem;
         margin: 5px 15px;
         font-weight: normal;
         max-width: 75%;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease 0s;
       }
 
       lucky-tile:hover > link-button {
@@ -595,9 +612,9 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
       }
 
       h2 {
-        font-size: 56px;
+        font-size: 3.5rem;
         margin: 15px;
-        font-weight: normal;
+        font-weight: bold;
       }
 
       .spacer {
@@ -614,7 +631,7 @@ const It=function(){const t=document.createElement("link").relList;if(t&&t.suppo
         display: contents;
         color: inherit;
       }
-    `}connectedCallback(){super.connectedCallback(),Tt(me).then(t=>{this.projects=t.projects,this.requestUpdate()});const n=()=>{window.innerWidth<700?(this.columnCount=2,this.style.setProperty("--columnCount",this.columnCount.toString()),this.requestUpdate()):window.innerWidth<1200?(this.columnCount=3,this.style.setProperty("--columnCount",this.columnCount.toString()),this.requestUpdate()):(this.columnCount=5,this.style.setProperty("--columnCount",this.columnCount.toString()),this.requestUpdate())};window.addEventListener("resize",n),n()}render(){let n=null,t=0,e=null;const s=2,i=this.columnCount;return m`
+    `}connectedCallback(){super.connectedCallback(),Tt(me).then(t=>{this.projects=t.projects,this.requestUpdate()});const n=()=>{window.innerWidth<700?(this.columnCount=1,this.style.setProperty("--columnCount",this.columnCount.toString()),this.requestUpdate()):window.innerWidth<1200?(this.columnCount=3,this.style.setProperty("--columnCount",this.columnCount.toString()),this.requestUpdate()):(this.columnCount=5,this.style.setProperty("--columnCount",this.columnCount.toString()),this.requestUpdate())};window.addEventListener("resize",n),n()}render(){let n=null,t=0,e=null;const s=2,i=this.columnCount;return m`
       <div class="grid">
         ${ge(this.projects.sort((r,o)=>new Date(o.editorialDate)-new Date(r.editorialDate)),r=>r.id,r=>{let o=0;if(n){const h=Math.abs((new Date(r.editorialDate)-new Date(n))/26784e5);o=Math.round(Math.min(h,s))}n=new Date(r.editorialDate);const c=n.getFullYear();let l=!1;c!==e&&(e=n.getFullYear(),c!==new Date().getFullYear()&&(l=!0));function a(h=1){return(t+h)%i+1}a(o)+1>i&&o++;function v(){const h=t;return t=(t+1)%i,h+1}return m`
               ${new Array(o).fill(1).map(()=>m`<div
